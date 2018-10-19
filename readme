@@ -1,0 +1,67 @@
+
+# Создаем вируальное окружение GB_Django в нужной нам папке
+virtualenv --python=python3 GB_Django
+
+
+# Запускаем из консоли вируальное окружение
+. getstarted/bin/activate
+
+# Из консоли из рабочей папки запускаем git
+git init
+
+#  Создаем файл gitignore
+
+# Устанавливаем в рабочей папке фреймворк django
+
+pip install django
+
+# Обновить django - запускаем из папки виртуального окружения
+
+pip install -U django
+
+# Создаем проект нашего сайта django, называем его server
+django-admin startproject server
+
+# Переходим в папку проекта cd server/ и запускаем его
+
+cd server/
+
+python manage.py runserver
+
+# Идем в браузер и вводим http://localhost:8000/, на котором будет наш проект
+
+# Создаем приложение из папки проекта
+
+python manage.py startapp main
+
+# Идем в файл setting.py в папке server/server/
+# Добавляем настройки в ALLOWED_HOSTS - разрешенные хосты
+# INSTALLED_APPS - добавляем имена наших приложений
+
+# Идем в директорию main и создаем там папку templates  для шаблонов страниц. Внутри templates создаем еще папку  main
+# и в ней создаем index.html
+
+# Идем в файл server/main/views.py и прописываем функцию
+def main(request):
+   return render(request, 'main/index.html')
+
+# Идем в server/server/urls.py
+# Импортируем свою функцию
+from main.views import main
+
+# Добавляем наш путь в список
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', main)
+]
+
+# Перезапускаем сервер
+# Добавляем новые шаблоны страниц и для них создаем записи во views и urls
+# Перезапускаем сервер и смотрим браузер- появились новые страницы
+
+# Оптимизируем проект - создаем отдельный файл main/urls.py - переносим туда содержимое server/urls.py
+# Меняем содержимое server/urls.py - добавляем include и ссылку на main/urls.py
+
+
+
+

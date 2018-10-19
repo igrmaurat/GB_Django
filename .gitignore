@@ -1,0 +1,5 @@
+db.sqlite3
+__pycashe__
+.gitignore
+/GB_Django
+GB_Django.code-workspace

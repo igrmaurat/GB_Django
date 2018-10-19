@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+	<meta charset="UTF-8">
+	<title>Каталог сайта "Товары почтой"</title>
+	<link rel="stylesheet" href="static/main/css/style.css">
+	
+</head>
+	<body>
+		<div class="container">
+			<header>
+				<img class="logo" src="static/main/img/logo.png" alt="Логотип магазина">
+				<div class="navy">
+					<a href="{% url "main" %}">Главная</a>
+					<a href="{% url "catalog" %}">Каталог</a>
+					<a href="{% url "contact" %}">Контакты</a>
+				</div>
+				<hr>
+			</header>
+		
+			<h1>Каталог товаров</h1>
+			
+			<div class="catalog">
+				<img class="catalog" src=".\img\prod_1.jpg" alt="Воздухоувлажнитель Tefal Aqua Perfect HD5230F0">
+				<a href="{% url "product_1" %}" >Описание товара 1</a>
+			</div>
+
+			<div class="catalog">
+				<img class="catalog" src="..static\main\img\prod_2.jpg" alt="Воздухоувлажнитель Tefal Tefal HD5115F0"></li>
+				<a href="{% url "product_2" %}" >Описание товара 2</a>
+			</div>
+			<div class="catalog">
+				<img class="catalog" src=".\img\prod_3.jpg" alt="Воздухоувлажнитель Philips HU 4802"></li>
+				<a href="{% url "product_3" %}">Описание товара 3</a>
+			</div>
+			
+			<footer>
+				<hr />
+				<div class="copy">&copy; Сайт кампании "Товары почтой". Все права защищены. 2018 год.</div>
+			</footer>
+		</div>
+</body>
+</html>

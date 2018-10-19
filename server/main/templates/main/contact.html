@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+	<meta charset="UTF-8">
+	<title>Контакты сайта "Товары почтой"</title>
+	<link rel="stylesheet" href="static/main/css/style.css">
+</head>
+	<body>
+	
+		<div class="container">
+			<header>
+				<img class="logo" src="static/main/img/logo.png" alt="Логотип магазина">
+				<div class="navy">
+					<a href="{% url "main" %}">Главная</a>
+					<a href="{% url "catalog" %}">Каталог</a>
+					<a href="{% url "contact" %}">Контакты</a>
+				</div>
+				<hr>
+			</header>
+		
+			<h1>Напишите нам</h1>
+
+			<form action="URL">
+				<input type="text" placeholder="Ваше имя"><br>
+				<input type="email" placeholder="Ваша почта"><br>
+				<input type="text" placeholder="Тема"><br>
+				<textarea  name="text_1" id="text_1" cols="30" rows="10">Ваше сообщение</textarea>
+				<p><input type="submit" value="Отправить"></p>
+			
+			<h2>Адрес</h2>
+				<p>г. Москва, улица Ленина, дом 1</p>
+				<p>Наш телефон 8-800-100-1000</p>
+				<p>Наша почта pochta@mail.ru</p>
+				<iframe class="map" src="https://yandex.ru/map-widget/v1/-/CBekJQD2TD"></iframe>
+			
+			<footer>
+				<hr />
+				<div class="copy">&copy; Сайт кампании "Товары почтой". Все права защищены. 2018 год.</div>
+			</footer>
+		</div>
+</body>
+</html>

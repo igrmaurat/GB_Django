@@ -28,14 +28,19 @@
 				<p><input type="submit" value="Отправить"></p>
 			
 			<h2>Адрес</h2>
-				<p>г. Москва, улица Ленина, дом 1</p>
-				<p>Наш телефон 8-800-100-1000</p>
-				<p>Наша почта pochta@mail.ru</p>
-				<iframe class="map" src="https://yandex.ru/map-widget/v1/-/CBekJQD2TD"></iframe>
+			<ul>
+				{% for itm in contacts %}
+					<li>
+						{{ itm }}
+					</li>
+
+				{% endfor %}
+			</ul>
+			<iframe class="map" src="https://yandex.ru/map-widget/v1/-/CBekJQD2TD"></iframe>
 			
 			<footer>
 				<hr />
-				<div class="copy">&copy; Сайт кампании "Товары почтой". Все права защищены. 2018 год.</div>
+				<div class="copy">{{ footer }}</div>
 			</footer>
 		</div>
 </body>

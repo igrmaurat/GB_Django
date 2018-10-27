@@ -44,6 +44,7 @@ def main(request):
 # Создаем функцию для страницы контактов
 def contact(request):
    context = {
+      'h1': 'Напишите нам',
       'contacts': [ 'г.Москва, улица Ленина, дом 1 ',
                     'Наш телефон 8 - 800 - 100 - 1000',
                     'Наша почта pochta @ mail.ru',
@@ -55,27 +56,4 @@ def contact(request):
       'main/contact.html' , context
    )
    return HttpResponse(response_string)
-
-# Создаем функцию для страницы about
-def catalog(request):
-
-   context = {
-      'footer': '© Сайт кампании "Товары почтой". Все права защищены. 2018 год.',
-   }
-   response_string = render_to_string(
-      'main/catalog.html', context
-   )
-   return HttpResponse(response_string)
-
-# Создаем функцию для страницы product_1
-def product_1(request):
-   return render(request, 'main/product_1.html')
-
-# Создаем функцию для страницы product_2
-def product_2(request):
-   return render(request, 'main/product_2.html')
-
-# Создаем функцию для страницы product_3
-def product_3(request):
-   return render(request, 'main/product_3.html')
 

@@ -1,0 +1,28 @@
+{% extends 'master.html' %}
+
+
+{% block page_title %}
+Каталог сайта "Товары почтой"
+{% endblock %}
+
+
+{% block page_content %}
+
+{% for itm in products %}
+
+	<div class="catalog">
+		<img class="catalog" src="/static/main/img/prod_1.jpg" alt={{ itm }}>
+		<a href="{% url "product_1" %}" > {{ itm }} </a>
+	</div>
+
+	<!--<div class="catalog">-->
+		<!--<img class="catalog" src="/static/main/img/prod_2.jpg" alt="Воздухоувлажнитель Tefal Tefal HD5115F0"></li>-->
+		<!--<a href="{% url "product_2" %}" >Описание товара 2</a>-->
+	<!--</div>-->
+	<!--<div class="catalog">-->
+		<!--<img class="catalog" src="/static/main/img/prod_3.jpg" alt="Воздухоувлажнитель Philips HU 4802"></li>-->
+		<!--<a href="{% url "product_3" %}">Описание товара 3</a>-->
+	<!--</div>-->
+	{% endfor %}
+
+{% endblock %}

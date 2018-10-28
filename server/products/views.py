@@ -25,14 +25,15 @@ def catalog(request):
    return HttpResponse(response_string)
 
 # Создаем функцию для страницы product_1
-def product_1(request):
-   return render(request, 'products/product_1.html')
+def product(request, idx):
 
-# Создаем функцию для страницы product_2
-def product_2(request):
-   return render(request, 'products/product_2.html')
+   with open("products/data/products.json", 'r') as file:
+      context = json.load(file)
 
-# Создаем функцию для страницы product_3
-def product_3(request):
-   return render(request, 'products/product_3.html')
+   return render(request, 'products/detail.html',
+                 {
+                    'object': context['products'][idx]
+                 })
+
+
 

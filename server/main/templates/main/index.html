@@ -1,37 +1,21 @@
-<!DOCTYPE html>
-<html lang="zxx">
-	<head>
-		<meta charset="UTF-8">
-		<title>Главная страница</title>
-		<link rel="stylesheet" href="/static/css/style.css">
-	</head>
-	<body>
-		
-		<div class="container">
-			<header>
-				<img class="logo" src="/static/img/logo.png" alt="Логотип магазина">
-				<div class="navy">
-					<a href="{% url "main" %}">Главная</a>
-					<a href="{% url "catalog" %}">Каталог</a>
-					<a href="{% url "contact" %}">Контакты</a>
-				</div>
-				<div class="clearfix"></div>
-				<hr>
-			</header>
-			
-			<h1>{{ h1 }}</h1>
+{% extends 'master.html' %}
 
-			<div class="page_text">
-				{% for itm in page_text %}
-					<p>
-						{{ itm }}
-					</p>
-				{% endfor %}
-			</div>
-			<footer>
-				<hr />
-				<div class="copy">{{ footer }}</div>
-			</footer>
-		</div>
-	</body>
-</html>
+
+{% block page_title %}
+Магазин - Товары почтой
+{% endblock %}
+
+
+{% block page_content %}
+
+
+
+	<div class="page_text">
+		{% for itm in page_text %}
+			<p>
+				{{ itm }}
+			</p>
+		{% endfor %}
+	</div>
+
+{% endblock %}

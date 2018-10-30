@@ -61,6 +61,13 @@ urlpatterns = [
 
 # Оптимизируем проект - создаем отдельный файл main/urls.py - переносим туда содержимое server/urls.py
 # Меняем содержимое server/urls.py - добавляем include и ссылку на main/urls.py
+# Настраиваем контекст
+
+# СОздаем второе приложение - products для товаров
+cd server
+python manage.py startapp products
+
+
 
 
 

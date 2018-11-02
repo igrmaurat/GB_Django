@@ -3,6 +3,7 @@ from django.db import models
 
 class Category(models.Model):
     title = models.CharField( max_length =250 )
+    h1 = models.CharField(max_length=250, blank = True, null = True,)
 
     snippet = models.TextField(
         blank = True,
@@ -16,15 +17,20 @@ class Category(models.Model):
         auto_now_add=True,
     )
 
+    def __str__(self):
+        return self.title
 
 
 class Product(models.Model):
     title = models.CharField( max_length =250 )
 
+    h1 = models.CharField(max_length=250, blank=True, null=True, )
 
     category = models.ForeignKey(
         Category,
-        on_delete = models.CASCADE
+        on_delete = models.CASCADE,
+        blank=True,
+        null=True,
     )
     image = models.ImageField(
         upload_to = 'products'
@@ -45,3 +51,6 @@ class Product(models.Model):
     created = models.DateTimeField(
         auto_now_add=True,
     )
+
+    def __str__(self):
+        return self.title

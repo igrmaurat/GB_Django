@@ -9,7 +9,7 @@ app_name = 'products'
 
 urlpatterns = [
     path('', catalog, name="catalog"),
-    path('<int:idx>/', product, name="product"),
+    path('<int:pk>/', product, name="product"),
 
 ]
 

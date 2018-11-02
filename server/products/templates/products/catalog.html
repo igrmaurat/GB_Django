@@ -8,11 +8,11 @@
 
 {% block page_content %}
 
-{% for itm in products %}
+	{% for itm in products %}
 
 	<div class="catalog">
 		<img class="catalog" src="/static/main/img/prod_1.jpg" >
-		<a href="{% url 'products:product' idx=forloop.counter0 %}">{{ itm }}</a>
+		{% include 'products/components/item.html' with count=itm.id name=itm.h1 %}
 	</div>
 
 	{% endfor %}

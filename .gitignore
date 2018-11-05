@@ -3,8 +3,12 @@ __pycashe__
 .gitignore
 /GB_Django
 GB_Django.code-workspace
+<<<<<<< HEAD
 lib
 
+=======
+lib/
+>>>>>>> f637d42ed97dbd3c438533b514bd6d27c591bdc0
 
 # Compiled source #
 ###################

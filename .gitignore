@@ -4,6 +4,10 @@ __pycashe__
 GB_Django.code-workspace
 <<<<<<< HEAD
 lib
+bin
+include
+share
+
 
 =======
 lib/

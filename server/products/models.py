@@ -35,6 +35,7 @@ class Product(models.Model):
     image = models.ForeignKey(
         'images.Image',
         on_delete = models.PROTECT,
+
     )
 
     snippet = models.TextField(

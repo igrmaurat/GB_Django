@@ -32,8 +32,9 @@ class Product(models.Model):
         blank=True,
         null=True,
     )
-    image = models.ImageField(
-        upload_to = 'products'
+    image = models.ForeignKey(
+        'images.Image',
+        on_delete = models.PROTECT,
     )
 
     snippet = models.TextField(

@@ -2,4 +2,4 @@
 
 cd server/
 
-python manage.py runserver
+python3 manage.py $@

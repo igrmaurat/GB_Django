@@ -1,15 +1,27 @@
-db.sqlite3
 __pycashe__
 .gitignore
+.idea/workspace.xml
 /GB_Django
 GB_Django.code-workspace
+<<<<<<< HEAD
+lib
+bin
+include
+share
+<<<<<<< HEAD
+=======
+
+>>>>>>> 592c56b481ec0549d27dc0f2aa916b0ea3a2009d
+
+=======
 lib/
+>>>>>>> f637d42ed97dbd3c438533b514bd6d27c591bdc0
 
 # Compiled source #
 ###################
 *.com
 *.class
-*.dll
+*.
 *.exe
 *.o
 *.so
@@ -30,7 +42,7 @@ lib/
 # Logs and databases #
 ######################
 *.log
-*.sqlite
+
 
 # OS generated files #
 ######################

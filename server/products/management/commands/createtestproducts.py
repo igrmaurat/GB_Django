@@ -13,6 +13,7 @@ class Command(BaseCommand):
                 Product.objects.create(
                     title = product_name,
                     h1 = product_name,
+                    image_id = 1,
                 )
                 self.stdout.write(
                     self.style.SUCCESS(product_name)

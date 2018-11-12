@@ -1,8 +1,14 @@
 {% extends 'master.html' %}
 
+{% load static %}
+
 
 {% block page_title %}
 Магазин - Товары почтой
+{% endblock %}
+
+{% block page_styles %}
+<link rel="stylesheet" href="{% static 'main/css/style.css' %}">
 {% endblock %}
 
 

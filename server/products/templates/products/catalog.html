@@ -1,8 +1,13 @@
 {% extends 'master.html' %}
+{% load static %}
 
 
 {% block page_title %}
 Каталог сайта "Товары почтой"
+{% endblock %}
+
+{% block page_styles %}
+<link rel="stylesheet" href="{% static 'main/css/style.css' %}">
 {% endblock %}
 
 
@@ -11,8 +16,8 @@
 	{% for itm in products %}
 
 	<div class="catalog">
-		<img class="catalog" src="/static/main/img/prod_1.jpg" >
-		{% include 'products/components/item.html' with count=itm.id name=itm.h1 %}
+
+		{% include 'products/components/item.html' with image=itm.image count=itm.id name=itm.h1 %}
 	</div>
 
 	{% endfor %}

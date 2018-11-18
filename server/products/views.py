@@ -1,9 +1,10 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404, get_list_or_404
 from django.template import Template, Context
 from django.template.loader import get_template, render_to_string
 from django.http import HttpResponse
 from django.http import Http404
 from django.urls import reverse_lazy
+from django.core.paginator import Paginator
 
 import json
 
@@ -60,7 +61,6 @@ def product_update(request, pk):
 
 
 
-
 def product_create(request):
    form = ProductForm()
    success_url = reverse_lazy("main:main")
@@ -78,38 +78,20 @@ def product_create(request):
 
 def catalog(request):
 
-   context = {}
+   #query = Product.objects.all() # этот вариант выведет список, даже если он пустой
+   query = get_list_or_404(Product) # этот вариант отдаст 404 ответ, если в списке нет элементов
 
+   # Пагинация ?page=2
+   page = request.GET.get('page')
+   paginator = Paginator(query, 10)
+   products = paginator.get_page(page)
 
-   # with open("products/data/products.json", 'r') as file:
-   #    context = json.load(file)
-   #
-   #
-   # context['h1'] = 'Наши товары'
-   # context['footer'] = '© Сайт кампании "Товары почтой". Все права защищены. 2018 год.'
-   #
-   # response_string = render_to_string(
-   #    'products/catalog.html', context
-   # )
-   # return HttpResponse(response_string)
+   return render(request, 'products/catalog.html', {'products': products} )
 
-   query = Product.objects.all()
-   return render(request, 'products/catalog.html', {'products': query} )
-
-# Создаем функцию для страницы product_1
+# Создаем функцию для страницы карточки товара detail
 def product(request, pk):
-   context = {}
 
-   # with open("products/data/products.json", 'r') as file:
-   #    context = json.load(file)
-   #
-   # return render(request, 'products/detail.html',
-   #               {
-   #                  'object': context['products'][idx]
-   #               })
+   #obj = Product.objects.get(id=pk)
+   obj = get_object_or_404(Product, pk=pk)
 
-   obj = Product.objects.get(id=pk)
    return render(request, 'products/detail.html', {'products': obj})
-
-
-

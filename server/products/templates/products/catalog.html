@@ -1,0 +1,25 @@
+{% extends 'master.html' %}
+{% load static %}
+
+
+{% block page_title %}
+Каталог сайта "Товары почтой"
+{% endblock %}
+
+{% block page_styles %}
+<link rel="stylesheet" href="{% static 'main/css/style.css' %}">
+{% endblock %}
+
+
+{% block page_content %}
+
+	{% for itm in products %}
+
+	<div class="catalog">
+
+		{% include 'products/components/item.html' with image=itm.image count=itm.id name=itm.h1 %}
+	</div>
+
+	{% endfor %}
+
+{% endblock %}

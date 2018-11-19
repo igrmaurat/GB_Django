@@ -1,0 +1,35 @@
+{% extends 'master.html' %}
+{% load static %}
+
+
+{% block page_title %}
+Контакты сайта "Товары почтой"
+{% endblock %}
+
+{% block page_styles %}
+<link rel="stylesheet" href="{% static 'main/css/style.css' %}">
+{% endblock %}
+
+
+{% block page_content %}
+
+
+	<form action="URL">
+		<input type="text" placeholder="Ваше имя"><br>
+		<input type="email" placeholder="Ваша почта"><br>
+		<input type="text" placeholder="Тема"><br>
+		<textarea  name="text_1" id="text_1" cols="30" rows="10">Ваше сообщение</textarea>
+		<p><input type="submit" value="Отправить"></p>
+
+	<h2>Адрес</h2>
+	<ul>
+		{% for itm in contacts %}
+			<li>
+				{{ itm }}
+			</li>
+
+		{% endfor %}
+	</ul>
+	<iframe class="map" src="https://yandex.ru/map-widget/v1/-/CBekJQD2TD"></iframe>
+
+{% endblock %}

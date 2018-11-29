@@ -1,19 +1,20 @@
+import json
 from django.shortcuts import render, redirect, get_object_or_404, get_list_or_404
 from django.views.generic import (
-   CreateView, UpdateView, DeleteView,
-   ListView, DetailView
+    CreateView, UpdateView, DeleteView,
+    ListView, DetailView
 )
-from django.urls import reverse, reverse_lazy
-from django.core.paginator import Paginator
-
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import (
     LoginRequiredMixin, UserPassesTestMixin
 )
+from django.core.paginator import Paginator
+from django.urls import reverse, reverse_lazy
+from django.http import Http404, JsonResponse
 
 from accounts.mixins import AdminRoleRequired
-from products.models import Product
 from products.forms import ProductForm
+from products.models import Product
 
 
 class ProductJsonListView(ListView):
@@ -26,8 +27,6 @@ class ProductJsonListView(ListView):
             lambda itm: {
                'id': itm.id,
                'title': itm.title,
-               'h1': itm.h1,
-               'snippet': str(itm.snippet) if itm.snippet else None,
                'category': str(itm.category) if itm.category else None,
                'image': itm.image.url,
                'cost': itm.cost,

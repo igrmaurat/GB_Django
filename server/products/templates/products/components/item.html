@@ -1,4 +1,4 @@
 <img class="product__image" src="{{ image.url }}" alt="{{ image.title }}">
-<a class="product__link" href="{% url 'products:product' pk=count %}">
+<a class="product__link" href="{% url 'products:detail' pk=count %}">
     {{ name }}
 </a>

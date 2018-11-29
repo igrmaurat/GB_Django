@@ -34,14 +34,12 @@ django_router = [
 ]
 
 
-
-
 urlpatterns = [
     path('api/', include(router.urls)),
     path('django_api/', include(django_router)),
     path('admin/', admin.site.urls),
-    path('', include('main.urls')),
-    path('accounts/', include('accounts.urls')),
-    path('catalog/', include('products.urls')),
+    path('products/', include('products.urls')),
     path('categories/', include('products.urls.categories')),
+    path('accounts/', include('accounts.urls')),
+    path('', include('main.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -35,7 +35,7 @@
     const productList = document.querySelector('.container');
     const showMoreButton = document.querySelector('.show-more-button');
 
-    let productsUrl = '{% url "rest_products:list" %}?page={% if page_obj.has_next %}{{ page_obj.next_page_number }}{% endif %}';
+    let productsUrl = '{% url "rest_products:catalog" %}?page={% if page_obj.has_next %}{{ page_obj.next_page_number }}{% endif %}';
 
     const showMore = () => {
         fetch(productsUrl)

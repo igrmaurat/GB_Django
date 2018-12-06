@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'cart',
     'accounts',
     'images',
     'main',
@@ -46,6 +47,11 @@ INSTALLED_APPS = [
 ]
 
 AUTH_USER_MODEL = 'accounts.AccountUser'
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 25
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

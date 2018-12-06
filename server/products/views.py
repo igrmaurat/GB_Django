@@ -5,6 +5,9 @@ from django.http import HttpResponse
 from django.http import Http404
 from django.urls import reverse_lazy
 from django.core.paginator import Paginator
+from functools import reduce
+from django.db.models import Q
+from django.http import JsonResponse
 
 import json
 
@@ -95,3 +98,38 @@ def product(request, pk):
    obj = get_object_or_404(Product, pk=pk)
 
    return render(request, 'products/detail.html', {'products': obj})
+
+def product_list(request):
+   query = get_list_or_404(Product)
+
+   return render(
+      request,
+      "products/catalog.html",
+      {'object_list': query}
+   )
+
+def product_json_list(request):
+   query_params = (
+      (key, list(map(int, value.split(',')))) if key.endswith('_in') else val
+      for key, value in request.GET.items()
+   )
+   query = get_list_or_404(
+      Product,
+      reduce(
+         lambda store, itm: store | Q(**{itm[0]: itm[1]}),
+         query_params,
+         Q()
+      )
+   )
+   return JsonResponse(
+      list(
+         map(
+            lambda itm: {
+               'id': itm.id,
+               'title': itm.title
+            },
+            query
+         )
+      ),
+      safe = False
+   )

@@ -15,6 +15,9 @@ from django.http import Http404, JsonResponse
 from accounts.mixins import AdminRoleRequired
 from products.forms import ProductForm
 from products.models import Product
+from functools import reduce
+from django.db.models import Q
+from django.http import JsonResponse
 
 
 class ProductJsonListView(ListView):
@@ -220,3 +223,29 @@ def product_detail(request, pk):
    obj = get_object_or_404(Product, pk=pk)
 
    return render(request, 'products/detail.html', {'object': obj})
+
+def product_json_list(request):
+   query_params = (
+      (key, list(map(int, value.split(',')))) if key.endswith('_in') else val
+      for key, value in request.GET.items()
+   )
+   query = get_list_or_404(
+      Product,
+      reduce(
+         lambda store, itm: store | Q(**{itm[0]: itm[1]}),
+         query_params,
+         Q()
+      )
+   )
+   return JsonResponse(
+      list(
+         map(
+            lambda itm: {
+               'id': itm.id,
+               'title': itm.title
+            },
+            query
+         )
+      ),
+      safe = False
+   )

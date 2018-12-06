@@ -19,6 +19,13 @@
 	{% for itm in products %}
 
 		{% include 'products/components/item.html' with image=itm.image count=itm.id name=itm.h1 %}
+		<div class="add-to-cart__button">
+			<button itemid="{{ obj.id }}" class="product-item__button">
+				<span>
+					Добавить в корзину
+				</span>
+			</button>
+		</div>
 
 	{% endfor %}
 </div>
@@ -54,6 +61,23 @@
     };
 
     showMoreButton.addEventListener('click', showMore);
+</script>
+<script src="{% static 'products/js/counter.js' %}"></script>
+<script>
+	const items = document.querySelectorAll('.catalog');
+	items.forEach(
+		itm => {
+		const btn = itm.querySelector('button')
+		btn.addEventListener(
+			'click',
+			evt => {
+				incLocalValue(
+					'products', btn.getAttribute('itemid')
+				)
+			}
+		)
+		}
+	);
 </script>
 {% endblock %}
 {% endblock %}

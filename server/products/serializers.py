@@ -29,8 +29,6 @@ class CategorySerializer(ModelSerializer):
 
     class Meta:
         model = Category
-        # fields = ['url', 'title', 'snippet']
-        # fields = ['title', 'snippet', 'site_url', 'is_new']
         fields = ['url', 'title', 'snippet', 'site_url', 'is_new']
 
 

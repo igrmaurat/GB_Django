@@ -35,6 +35,7 @@ django_router = [
 
 
 urlpatterns = [
+    path('cart/', include('cart.urls')),
     path('api/', include(router.urls)),
     path('django_api/', include(django_router)),
     path('admin/', admin.site.urls),
